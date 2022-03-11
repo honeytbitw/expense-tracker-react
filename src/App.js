@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Splitwise from './Components/Splitwise';
+import React from 'react'
+import { Expensetracker } from './Components/Expensetracker';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Registration from './Components/Registration';
+import Login from './Components/Login';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+
+      <Route path="/register">
+        <Registration/>
+        </Route>
+    
+        <Route path="/login">
+        <Login/>
+        </Route>
+
+      <Route path="/expense">
+        <Expensetracker/>
+        </Route>
+        
+      <Route path="/split">
+        <Splitwise/>
+        </Route>
+      </Switch>
+      {/* <Splitwise/> */}
+      {/* <Expensetracker/> */}
     </div>
+    </Router>
   );
 }
 
