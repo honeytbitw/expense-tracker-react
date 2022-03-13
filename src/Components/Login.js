@@ -45,24 +45,24 @@ function Login() {
         <form onSubmit={handleLogin}>
           <h3>Log In</h3>
           <div className="form-group">
-            <label>Email</label>
-            <input
+            <table style={{margin:'0px 260px'}}>
+            <tr><td><label style={{fontSize:'20px', paddingRight:'5px'}}>Email</label></td>
+            <td><input
               type="email"
               className="form-control"
               placeholder="Enter email"
               onChange={(event) => setEmaillog(event.target.value)}
-            />
-          </div>
-        <br></br>
-          <div className="form-group">
-            <label>Password</label>
-            <input
+            /></td></tr>
+            <tr><td><label style={{fontSize:'20px', paddingRight:'5px'}}>Password</label></td>
+            <td><input
               type="password"
               className="form-control"
               placeholder="Enter password"
               onChange={(event) => setPasswordlog(event.target.value)}
-            />
+            /></td></tr>
+            </table>
           </div>
+        <br></br>
           <br></br>
           <button type="submit" className="btn btn-dark btn-lg btn-block">
             Login

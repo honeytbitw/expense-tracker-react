@@ -49,44 +49,39 @@ function Registration() {
               <h3>Sign Up</h3>
 
               <div className="form-group">
-                <label>Name</label>
-                <input
+                <table style={{margin: '0px 260px'}}>
+                <tr><td><label>Full Name</label></td>
+                <td><input
                   type="text"
                   className="form-control"
                   placeholder="Enter Full Name"
-                  name="name"
                   onChange={(event) => setName(event.target.value)}
-                />
-              </div>
+                /></td></tr>
 
-              <div className="form-group">
-                <label>Email</label>
-                <input
+                <tr><td><label>Email</label></td>
+                <td><input
                   type="email"
                   className="form-control"
                   placeholder="Enter email"
                   onChange={(event) => setEmail(event.target.value)}
-                />
-              </div>
+                /></td></tr>
 
-              <div className="form-group">
-                <label>Password</label>
-                <input
+                <tr><td><label>Password</label></td>
+                <td><input
                   type="password"
                   className="form-control"
                   placeholder="Enter password"
                   onChange={(event) => setPassword(event.target.value)}
-                />
-              </div>
+                /></td></tr>
 
-              <div className="form-group">
-                <label>Phone No.</label>
-                <input
+                <tr><td><label>Phone No.</label></td>
+                <td><input
                   type="Phone"
                   className="form-control"
                   placeholder="Enter contact no"
                   onChange={(event) => setPhone(event.target.value)}
-                />
+                /></td></tr>
+                </table>
               </div>
 
               

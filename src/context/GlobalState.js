@@ -1,84 +1,61 @@
-import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer';
-import axios from 'axios';
+import React, { createContext, useReducer, useEffect } from "react";
+import AppReducer from "./AppReducer";
 
-// Initial state
 const initialState = {
-  transactions: [],
-  error: null,
-  loading: true
-}
+  incomeTransactions:
+    JSON.parse(localStorage.getItem("incomeTransactions")) || [],
+  expenseTransactions:
+    JSON.parse(localStorage.getItem("expenseTransactions")) || []
+};
 
-// Create context
 export const GlobalContext = createContext(initialState);
 
-// Provider component
-export const GlobalProvider = ({ children }) => {
+export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // Actions
-  async function getTransactions() {
-    try {
-      const res = await axios.get('/api/v1/transactions');
+  useEffect(() => {
+    localStorage.setItem(
+      "incomeTransactions",
+      JSON.stringify(state.incomeTransactions)
+    );
+    localStorage.setItem(
+      "expenseTransactions",
+      JSON.stringify(state.expenseTransactions)
+    );
+  });
 
-      dispatch({
-        type: 'GET_TRANSACTIONS',
-        payload: res.data.data
-      });
-    } catch (err) {
-      dispatch({
-        type: 'TRANSACTION_ERROR',
-        payload: err.response.data.error
-      });
-    }
-  }
+  const deleteTransaction = id => {
+    dispatch({
+      type: "DELETE_TRANSACTION",
+      payload: id
+    });
+  };
 
-  async function deleteTransaction(id) {
-    try {
-      await axios.delete(`/api/v1/transactions/${id}`);
+  const addIncome = incomeTransaction => {
+    dispatch({
+      type: "ADD_INCOME",
+      payload: incomeTransaction
+    });
+  };
 
-      dispatch({
-        type: 'DELETE_TRANSACTION',
-        payload: id
-      });
-    } catch (err) {
-      dispatch({
-        type: 'TRANSACTION_ERROR',
-        payload: err.response.data.error
-      });
-    }
-  }
+  const addExpense = expenseTransaction => {
+    dispatch({
+      type: "ADD_EXPENSE",
+      payload: expenseTransaction
+    });
+  };
 
-  async function addTransaction(transaction) {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-
-    try {
-      const res = await axios.post('/api/v1/transactions', transaction, config);
-
-      dispatch({
-        type: 'ADD_TRANSACTION',
-        payload: res.data.data
-      });
-    } catch (err) {
-      dispatch({
-        type: 'TRANSACTION_ERROR',
-        payload: err.response.data.error
-      });
-    }
-  }
-
-  return (<GlobalContext.Provider value={{
-    transactions: state.transactions,
-    error: state.error,
-    loading: state.loading,
-    getTransactions,
-    deleteTransaction,
-    addTransaction
-  }}>
-    {children}
-  </GlobalContext.Provider>);
-}
+  return (
+    <GlobalContext.Provider
+      value={{
+        incomeTransactions: state.incomeTransactions,
+        expenseTransactions: state.expenseTransactions,
+        deleteTransaction,
+        addIncome,
+        addExpense
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  );
+};

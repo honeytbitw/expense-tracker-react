@@ -90,7 +90,7 @@ const Splitwise = () => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Payer</TableCell>
+              <TableCell align="center" style={{widht:'50%'}}>Payer</TableCell>
               <TableCell align="center">Payee</TableCell>
               <TableCell align="center">Amount</TableCell>
               <TableCell align="center">Add</TableCell>
@@ -220,7 +220,7 @@ const Splitwise = () => {
         <div className="p-name">
           <h2>Enter names of People in the group</h2>
           <div className="p-name-field">
-            <TextField id="outlined-basic" label="Name"
+            <TextField id="outlined-basic" placeholder="Name"
               variant="outlined"
               value={name}
               disabled={flag}
@@ -229,6 +229,10 @@ const Splitwise = () => {
           <Button variant="contained"
             color="primary"
             onClick={addParticipant}
+            style={{
+              backgroundColor: '#100C08',
+              marginTop:'4px'
+            }}
           >
             Add
                 </Button>
@@ -240,10 +244,12 @@ const Splitwise = () => {
                 {listOfNames()}
               </div>
             </div>
-            <Button variant="contained" color="secondary" onClick={handleOpenForm}>Submit</Button>
+            <Button variant="contained" color="secondary" style={{
+              backgroundColor: '#ed1c24', marginTop:'4px'
+            }} onClick={handleOpenForm}>Submit</Button>
           </>
         ) : null}
-
+      <hr></hr>
       </div>
           <br></br>
           <br></br>
@@ -273,9 +279,12 @@ const Splitwise = () => {
               
               {items && items.length ? (
                 <div className="form-names">
-                  <Button variant="contained" color="primary" onClick={handleTransactionDataSubmit}>Build Graph</Button>
+                  <Button variant="contained" color="primary" style={{backgroundColor:'#100C08'}} onClick={handleTransactionDataSubmit}>Build Graph</Button>
                   <br></br>
-                  <Button variant="contained" color="secondary" onClick={splitwiseTransactions}>Simplify Settlements</Button>
+                  <Button variant="contained" style={{
+              backgroundColor: '#ed1c24',
+              marginTop:'3px'
+            }}color="secondary" onClick={splitwiseTransactions}>Simplify Settlements</Button>
                 </div>
               ) : null}
             </Grid>
