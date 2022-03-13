@@ -1,13 +1,16 @@
-// import logo from './logo.svg';
 import './App.css';
 import Splitwise from './Components/Splitwise';
 import React from 'react'
-import { Expensetracker } from './Components/Expensetracker';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Registration from './Components/Registration';
 import Login from './Components/Login';
-// import { Navbar } from 'react-bootstrap';
 import { Navbar } from './Components/Navbar';
+import Header from "./Components/Header";
+import Balance from "./Components/Balance";
+import IncomeList from "./Components/IncomeList";
+import ExpenseList from "./Components/ExpenseList";
+import AddTransaction from "./Components/AddTransaction";
+import { GlobalContextProvider } from "./context/GlobalState";
 
 function App() {
   return (
@@ -25,7 +28,17 @@ function App() {
         </Route>
 
       <Route path="/expense">
-        <Expensetracker/>
+      <GlobalContextProvider>
+      <div className="container">
+        <div className="app-wrapper">
+          <Header />
+          <Balance />
+          <IncomeList />
+          <ExpenseList />
+          <AddTransaction />
+        </div>
+      </div>
+    </GlobalContextProvider>
         </Route>
         
       <Route path="/split">
