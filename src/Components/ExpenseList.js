@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import ExpenseTransaction from "./ExpenseTransaction";
+import '../app2.css';
 
 const ExpenseList = () => {
   const { expenseTransactions } = useContext(GlobalContext);

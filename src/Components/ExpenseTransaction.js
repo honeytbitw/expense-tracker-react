@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import '../app2.css';
 
 const ExpenseTransaction = ({ expenseTransaction }) => {
   const { deleteTransaction } = useContext(GlobalContext);
@@ -8,13 +9,13 @@ const ExpenseTransaction = ({ expenseTransaction }) => {
     <li className="transaction">
       <span className="transaction-text">{expenseTransaction.expenseText}</span>
       <span className="transaction-amount">
-        ${expenseTransaction.expenseAmount}
+      ₹{expenseTransaction.expenseAmount}
       </span>
       <button
         onClick={() => deleteTransaction(expenseTransaction.id)}
         className="delete-btn"
       >
-        <i className="fas fa-trash"></i>
+        X<i className="fas fa-trash"></i>
       </button>
     </li>
   );

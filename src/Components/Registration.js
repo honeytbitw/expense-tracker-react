@@ -42,7 +42,7 @@ function Registration() {
   return (
     <>
  
-        <div>
+        <div style={{fontSize:'16px'}}>
           {" "}
           {login ? (
             <form onSubmit={handleFormSubmit}>

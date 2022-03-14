@@ -11,6 +11,7 @@ import IncomeList from "./Components/IncomeList";
 import ExpenseList from "./Components/ExpenseList";
 import AddTransaction from "./Components/AddTransaction";
 import { GlobalContextProvider } from "./context/GlobalState";
+import {Homepage} from './Components/Homepage';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
       <Navbar></Navbar>
       <div className="content">
       <Switch>
+      <Route path="/home">
+        <Homepage/>
+        </Route>
+
       <Route path="/register">
         <Registration/>
         </Route>

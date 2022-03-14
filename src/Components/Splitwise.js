@@ -216,9 +216,9 @@ const Splitwise = () => {
 
   return (
     <div>
-      <div className="name-component">
+      <div className="name-component" style={{fontSize: '18px'}}>
         <div className="p-name">
-          <h2>Enter names of People in the group</h2>
+          <h2 style={{marginTop: '25px', fontSize: '23px', marginBottom: '15px'}}>Enter names of People in the group</h2>
           <div className="p-name-field">
             <TextField id="outlined-basic" placeholder="Name"
               variant="outlined"
@@ -231,7 +231,10 @@ const Splitwise = () => {
             onClick={addParticipant}
             style={{
               backgroundColor: '#100C08',
-              marginTop:'4px'
+              marginTop:'10px',
+              fontSize: '14px',
+              marginBottom: '10px',
+
             }}
           >
             Add
@@ -245,7 +248,7 @@ const Splitwise = () => {
               </div>
             </div>
             <Button variant="contained" color="secondary" style={{
-              backgroundColor: '#ed1c24', marginTop:'4px'
+              backgroundColor: '#ed1c24', margin:'8px 0px', fontSize: '14px',
             }} onClick={handleOpenForm}>Submit</Button>
           </>
         ) : null}

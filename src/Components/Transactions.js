@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { numberWithCommas } from '../utils/format';
+import '../app2.css';
 
 export const Transaction = ({ transaction }) => {
   const { deleteTransaction } = useContext(GlobalContext);

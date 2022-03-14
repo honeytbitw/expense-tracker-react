@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../context/GlobalState";
+import '../app2.css';
 
 const AddTransaction = () => {
   const { addIncome, addExpense } = useContext(GlobalContext);

@@ -1,15 +1,5 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
-// import Home from "./Home";
-
-// // import { Header } from './Header';
-// // import { Balance } from './Balance';
-// // import { IncomeExpenses } from './IncomeExpenses';
-// // import { TransactionList } from './TransactionList';
-// // import { AddTransaction } from './AddTransaction';
-// // import {Splitwise} from './Splitwise'
-// // import {Graph} from 'react-d3-graph'
-// import { GlobalProvider } from './GlobalState';
 function Login() {
   const [emaillog, setEmaillog] = useState(" ");
   const [passwordlog, setPasswordlog] = useState(" ");
@@ -20,6 +10,10 @@ function Login() {
 
   function handleLogin(e) {
     e.preventDefault();
+    let user = {
+      pass: "",
+      mail: ""
+    }
     let pass = localStorage
       .getItem("sanskarPassword")
       .replace(/"/g, "");
@@ -43,7 +37,7 @@ function Login() {
     <div>
       {home ? (
         <form onSubmit={handleLogin}>
-          <h3>Log In</h3>
+          <h3 style={{fontSize:'20px'}}>Log In</h3>
           <div className="form-group">
             <table style={{margin:'0px 260px'}}>
             <tr><td><label style={{fontSize:'20px', paddingRight:'5px'}}>Email</label></td>
